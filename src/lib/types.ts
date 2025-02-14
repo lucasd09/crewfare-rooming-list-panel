@@ -11,7 +11,7 @@ export type Booking = {
 export type RoomingList = {
   rooming_list_id: number;
   event_id: number;
-  eventName: string;
+  event_name: string;
   hotel_id: number;
   rfp_name: string;
   cut_off_date: string;

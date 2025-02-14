@@ -40,7 +40,7 @@ export const RoomingListCard = ({ roomingList }: RoomingListCardProps) => {
     {isFetching ? <Skeleton className="w-full h-5" /> : <DateRangeDisplay min={data?.minDate ?? ""} max={data?.maxDate ?? ""} />}
 
     <div className="flex gap-2">
-      <Button className="flex-1" onClick={handleLogBookings}>View Bookings ({data?.bookingsCount})</Button>
+      <Button className="flex-1" onClick={handleLogBookings} isLoading={isFetching}>View Bookings ({data?.bookingsCount})</Button>
       <AgreementButton />
     </div>
   </Card>

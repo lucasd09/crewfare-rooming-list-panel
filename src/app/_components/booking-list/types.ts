@@ -1,5 +1,5 @@
-import { Rfp } from "@/lib/types";
+import { RoomingListData } from "@/lib/types";
 
-export type BookingListProps = {
-  event: { name: string; rfps: Rfp[] };
+export type RoomingListProps = {
+  event: RoomingListData;
 };

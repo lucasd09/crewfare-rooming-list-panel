@@ -1,11 +1,3 @@
-export type Rfp = {
-  id: number;
-  name: string;
-  agreement_type: string;
-  cut_off_date: number;
-  bookings: number;
-};
-
 export type Booking = {
   bookingId: number;
   hotelId: number;
@@ -17,12 +9,12 @@ export type Booking = {
 };
 
 export type RoomingList = {
-  roomingListId: number;
-  eventId: number;
+  rooming_list_id: number;
+  event_id: number;
   eventName: string;
-  hotelId: number;
-  rfpName: string;
-  cutOffDate: string;
+  hotel_id: number;
+  rfp_name: string;
+  cut_off_date: string;
   status: "completed" | "received" | "archived" | "Confirmed";
   agreement_type: "leisure" | "staff";
 };
@@ -30,4 +22,18 @@ export type RoomingList = {
 export type RoomingListBooking = {
   roomingListId: number;
   bookingId: number;
+};
+
+export type RoomingListData = {
+  eventId: number;
+  eventName: string;
+  roomingCount: number;
+  roomingLists: RoomingList[];
+};
+
+export type BookingsListData = {
+  minDate: string;
+  maxDate: string;
+  bookingsCount: number;
+  bookings: Booking[];
 };

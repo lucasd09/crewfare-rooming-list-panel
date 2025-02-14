@@ -9,6 +9,7 @@ import { getRoomingLists } from "./actions"
 import { SearchFilters } from "./hooks/use-search/types"
 import { useState } from "react"
 import { useSearch } from "./hooks/use-search"
+import { RoomingListEmpty } from "./_components/rooming-list-empty"
 
 export default function Page() {
   const [searchTerm, setSearchTerm] = useState("")
@@ -39,7 +40,12 @@ export default function Page() {
         <StatusFilter filters={filters} setFilters={setFilters} />
       </div>
 
-      {isLoading ? <EventsSkeleton /> : filteredData?.map((event, i) => (<RoomingListEvent key={i} event={event} />))}
+      {isLoading
+        ? <EventsSkeleton />
+        : filteredData.length
+          ? filteredData.map((event, i) => (<RoomingListEvent key={i} event={event} />))
+          : <RoomingListEmpty />
+      }
 
     </div>
   )

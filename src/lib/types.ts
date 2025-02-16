@@ -9,14 +9,14 @@ export type Booking = {
 };
 
 export type RoomingList = {
-  rooming_list_id: number;
-  event_id: number;
-  event_name: string;
-  hotel_id: number;
-  rfp_name: string;
-  cut_off_date: string;
+  roomingListId: number;
+  eventId: number;
+  eventName: string;
+  hotelId: number;
+  rfpName: string;
+  cutOffDate: string;
   status: "completed" | "received" | "archived" | "Confirmed";
-  agreement_type: "leisure" | "staff";
+  agreementType: "leisure" | "staff";
 };
 
 export type RoomingListBooking = {

@@ -8,7 +8,7 @@ export const useSearch = (
   filters: SearchFilters,
 ): RoomingListData[] => {
   return useMemo(() => {
-    if (!events) {
+    if (!events?.length) {
       return [];
     }
 

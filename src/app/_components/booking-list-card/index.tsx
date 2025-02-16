@@ -11,9 +11,9 @@ import { DateRangeDisplay } from "./components/date-range-display";
 
 export const RoomingListCard = ({ roomingList }: RoomingListCardProps) => {
 
-  const { day: cutOffDay, month: cutOffMonth } = DateFormat(roomingList.cut_off_date);
+  const { day: cutOffDay, month: cutOffMonth } = DateFormat(roomingList.cutOffDate);
 
-  const { data, isFetching } = useQuery({ queryKey: ["bookings", roomingList.rooming_list_id], queryFn: () => getBookingsByRoomingListId(roomingList.rooming_list_id) })
+  const { data, isFetching } = useQuery({ queryKey: ["bookings", roomingList.roomingListId], queryFn: () => getBookingsByRoomingListId(roomingList.roomingListId) })
 
   const handleLogBookings = () => {
     console.table(data?.bookings);
@@ -22,10 +22,10 @@ export const RoomingListCard = ({ roomingList }: RoomingListCardProps) => {
   return <Card className="flex flex-col gap-3 p-4 min-w-[400px]">
     <div className="flex justify-between ">
       <div>
-        <h3 className="font-bold text-[#141416]">{roomingList.rfp_name}</h3>
+        <h3 className="font-bold text-[#141416]">{roomingList.rfpName}</h3>
         <div className="flex text-sm gap-1">
           <p className="text-muted-foreground">Agreement:</p>
-          <p className="font-medium">{roomingList.agreement_type}</p>
+          <p className="font-medium">{roomingList.agreementType}</p>
         </div>
       </div>
 

@@ -6,7 +6,7 @@ import { AgreementButton } from "./components/agreement-button";
 import { useQuery } from "@tanstack/react-query";
 import { getBookingsByRoomingListId } from "./actions";
 import { Skeleton } from "@/components/skeleton";
-import { DateFormat } from "@/lib/utils";
+import { DateFormat, uppercaseFirstLetter } from "@/lib/utils";
 import { DateRangeDisplay } from "./components/date-range-display";
 
 export const RoomingListCard = ({ roomingList }: RoomingListCardProps) => {
@@ -25,7 +25,7 @@ export const RoomingListCard = ({ roomingList }: RoomingListCardProps) => {
         <h3 className="font-bold text-[#141416]">{roomingList.rfpName}</h3>
         <div className="flex text-sm gap-1">
           <p className="text-muted-foreground">Agreement:</p>
-          <p className="font-medium">{roomingList.agreementType}</p>
+          <p className="font-medium">{uppercaseFirstLetter(roomingList.agreementType)}</p>
         </div>
       </div>
 

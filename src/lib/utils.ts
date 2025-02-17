@@ -14,3 +14,6 @@ export const DateFormat = (dateString: string) => {
 
   return { date, day, month, yyyy };
 };
+
+export const uppercaseFirstLetter = (str: string) =>
+  `${str.substring(0, 1).toUpperCase()}${str.substring(1)}`;

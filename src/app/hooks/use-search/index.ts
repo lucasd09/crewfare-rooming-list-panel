@@ -8,7 +8,7 @@ export const useSearch = (
   filters: SearchFilters,
 ): RoomingListData[] => {
   return useMemo(() => {
-    if (!events?.length) {
+    if (!events) {
       return [];
     }
 
@@ -17,11 +17,9 @@ export const useSearch = (
         ...event,
         roomingLists: event.roomingLists.filter((list) => {
           const matchesSearch =
-            list.event_name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-            list.rfp_name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-            list.agreement_type
-              .toLowerCase()
-              .includes(searchTerm.toLowerCase());
+            list.eventName.toLowerCase().includes(searchTerm.toLowerCase()) ||
+            list.rfpName.toLowerCase().includes(searchTerm.toLowerCase()) ||
+            list.agreementType.toLowerCase().includes(searchTerm.toLowerCase());
 
           const matchesFilter =
             (filters.active && list.status === "received") ||

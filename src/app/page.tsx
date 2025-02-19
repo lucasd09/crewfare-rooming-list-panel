@@ -2,7 +2,7 @@
 import { Search } from "lucide-react"
 import { Input } from "@/components/input"
 import { StatusFilter } from "./_components/status-filter"
-import { RoomingListEvent } from "./_components/booking-list"
+import { RoomingListEvent } from "./_components/rooming-list-event"
 import { useQuery } from "@tanstack/react-query"
 import { EventsSkeleton } from "./_components/events-skeleton"
 import { getRoomingListData } from "./actions"

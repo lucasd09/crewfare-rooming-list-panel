@@ -6,12 +6,12 @@ import { AgreementButton } from "./components/agreement-button";
 import { useQuery } from "@tanstack/react-query";
 import { getBookingsByRoomingListId } from "./actions";
 import { Skeleton } from "@/components/skeleton";
-import { DateFormat, uppercaseFirstLetter } from "@/lib/utils";
+import { dateFormat, uppercaseFirstLetter } from "@/lib/utils";
 import { DateRangeDisplay } from "./components/date-range-display";
 
 export const RoomingListCard = ({ roomingList }: RoomingListCardProps) => {
 
-  const { day: cutOffDay, month: cutOffMonth } = DateFormat(roomingList.cutOffDate);
+  const { day: cutOffDay, month: cutOffMonth } = dateFormat(roomingList.cutOffDate);
 
   const { data, isFetching } = useQuery({ queryKey: ["bookings", roomingList.roomingListId], queryFn: () => getBookingsByRoomingListId(roomingList.roomingListId) })
 

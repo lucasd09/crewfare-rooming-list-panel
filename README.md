@@ -39,16 +39,6 @@ To get the project up and running:
   pnpm dev
   ```
 
-## Design System and Documentation ##
-
-**Storybook** is fully integrated, providing a very rich documentation and examples of all components.
-
-You can run it with:
-
-```shell
-  pnpm storybook
-```
-
 ## Project Screenshots ##
 
 ### Lists grouped by events ###

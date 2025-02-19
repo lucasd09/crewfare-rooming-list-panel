@@ -5,7 +5,7 @@ export const cn = (...inputs: ClassValue[]) => {
   return twMerge(clsx(inputs));
 };
 
-export const DateFormat = (dateString: string) => {
+export const dateFormat = (dateString: string) => {
   const [yyyy, mm, dd] = dateString.split("-").map(Number);
   const date = new Date(yyyy, mm - 1, dd);
 

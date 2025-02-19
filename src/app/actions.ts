@@ -1,10 +1,12 @@
 "use server";
 
 import { env } from "@/lib/env";
-import { Booking, RoomingList, RoomingListData } from "@/lib/types";
 import roomingListsJSON from "../data/rooming-lists.json";
 import bookingsJSON from "../data/bookings.json";
 import roomingListBookingsJSON from "../data/rooming-list-bookings.json";
+import { Booking } from "@/models/booking";
+import { RoomingList } from "@/models/rooming-list";
+import { RoomingListData } from "@/models/rooming-list-data";
 
 export const getRoomingListData = async (): Promise<RoomingListData[]> => {
   const res = await fetch(`${env.API_URL}/roomingLists/getListData`, {

@@ -1,7 +1,7 @@
 "use server";
 
 import { env } from "@/lib/env";
-import { BookingsListData } from "@/lib/types";
+import { BookingsListData } from "@/models/bookings-list-data";
 
 export const getBookingsByRoomingListId = async (
   id: number,

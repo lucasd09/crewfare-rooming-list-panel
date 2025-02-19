@@ -1,13 +1,13 @@
 "use server";
 
 import { env } from "@/lib/env";
-import { Booking, RoomingListData } from "@/lib/types";
+import { Booking, RoomingList, RoomingListData } from "@/lib/types";
 import roomingListsJSON from "../data/rooming-lists.json";
 import bookingsJSON from "../data/bookings.json";
 import roomingListBookingsJSON from "../data/rooming-list-bookings.json";
 
 export const getRoomingListData = async (): Promise<RoomingListData[]> => {
-  const res = await fetch(`${env.API_URL}/roomingLists`, {
+  const res = await fetch(`${env.API_URL}/roomingLists/getListData`, {
     method: "GET",
   });
 
@@ -18,6 +18,16 @@ export const getRoomingListData = async (): Promise<RoomingListData[]> => {
 
 export const getBookings = async (): Promise<Booking[]> => {
   const res = await fetch(`${env.API_URL}/bookings`, {
+    method: "GET",
+  });
+
+  const data = await res.json();
+
+  return data;
+};
+
+export const getRoomingLists = async (): Promise<RoomingList[]> => {
+  const res = await fetch(`${env.API_URL}/roomingLists`, {
     method: "GET",
   });
 
@@ -74,7 +84,10 @@ export const insertRoomingListBookings = async () => {
   return data;
 };
 
-export const removeAllRoomingLists = async (ids: number[]) => {
+export const removeAllRoomingLists = async () => {
+  const roomingLists = await getRoomingLists();
+  const ids = roomingLists.map((roomingList) => roomingList.roomingListId);
+
   const body = JSON.stringify(ids);
 
   const res = await fetch(`${env.API_URL}/roomingLists/deleteBulk/`, {
@@ -85,7 +98,7 @@ export const removeAllRoomingLists = async (ids: number[]) => {
     body,
   });
 
-  const data = await res.json();
+  const data = await res.ok;
 
   return data;
 };
@@ -104,7 +117,7 @@ export const removeAllBookings = async () => {
     body,
   });
 
-  const data = await res.json();
+  const data = await res.ok;
 
   return data;
 };

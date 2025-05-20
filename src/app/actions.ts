@@ -7,7 +7,7 @@ import roomingListBookingsJSON from "../data/rooming-list-bookings.json";
 import { Booking } from "@/models/booking";
 import { RoomingList } from "@/models/rooming-list";
 import { RoomingListData } from "@/models/rooming-list-data";
-import { SearchFilters } from "@/models/search-filters";
+import { SearchFilters } from "./_components/status-filter/types";
 
 export const getRoomingListData = async (searchParams?: { searchTerm?: string; filters?: SearchFilters }): Promise<RoomingListData[]> => {
   const queryParams = new URLSearchParams();
@@ -21,8 +21,6 @@ export const getRoomingListData = async (searchParams?: { searchTerm?: string; f
     queryParams.append('closed', String(searchParams.filters.closed));
     queryParams.append('cancelled', String(searchParams.filters.cancelled));
   }
-
-  console.log(queryParams.toString());
   
   const res = await fetch(`${env.API_URL}/roomingLists/getListData?${queryParams.toString()}`, {
     method: "GET",

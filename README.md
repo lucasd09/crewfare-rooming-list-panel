@@ -63,7 +63,6 @@ Here're some of the project's best features:
 
 - Granular commits following the **[Conventional Commits Specs](https://www.conventionalcommits.org/en/v1.0.0/)**
 - Integration with the backend using Next.js actions.
-- A vertical stepper for easy navigation.
 - Pixel Perfect implementation of base design.
 
 ## Built with ##

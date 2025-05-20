@@ -8,22 +8,24 @@ import { EventsSkeleton } from "./_components/events-skeleton"
 import { getRoomingListData } from "./actions"
 import { SearchFilters } from "./hooks/use-search/types"
 import { useState } from "react"
-import { useSearch } from "./hooks/use-search"
 import { RoomingListEmpty } from "./_components/rooming-list-empty"
 import { InsertRoomingListButton } from "./_components/insert-rooming-list-button"
+import { useDebounce } from "@/lib/hooks/use-debounce"
 
 export default function Page() {
   const [searchTerm, setSearchTerm] = useState("")
-
   const [filters, setFilters] = useState<SearchFilters>({
     active: true,
     closed: true,
     cancelled: false,
   })
 
-  const { data, isLoading } = useQuery({ queryKey: ['rooming-lists'], queryFn: getRoomingListData })
+  const debouncedSearchTerm = useDebounce(searchTerm, 300)
 
-  const filteredData = useSearch(data, searchTerm, filters)
+  const { data, isLoading } = useQuery({
+    queryKey: ['rooming-lists', debouncedSearchTerm, filters],
+    queryFn: () => getRoomingListData({ searchTerm: debouncedSearchTerm, filters })
+  })
 
   return (
     <div className="px-8 py-12 flex flex-col gap-6 min-h-screen bg-background">
@@ -45,11 +47,10 @@ export default function Page() {
 
       {isLoading
         ? <EventsSkeleton />
-        : filteredData.length
-          ? filteredData.map((event, i) => (<RoomingListEvent key={i} event={event} />))
+        : data?.length
+          ? data.map((event, i) => (<RoomingListEvent key={i} event={event} />))
           : <RoomingListEmpty />
       }
-
     </div>
   )
 }

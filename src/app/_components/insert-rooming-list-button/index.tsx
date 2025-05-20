@@ -21,5 +21,5 @@ export const InsertRoomingListButton = () => {
     queryClient.resetQueries()
   }
 
-  return <Button onClick={handleMutate} isLoading={isPending} className="h-12">Insert Bookings and Rooming Lists</Button>
+  return <Button onClick={handleMutate} isLoading={isPending} className="h-12 w-full">Insert Bookings and Rooming Lists</Button>
 }

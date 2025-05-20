@@ -19,7 +19,7 @@ export const RoomingListCard = ({ roomingList }: RoomingListCardProps) => {
     console.table(data?.bookings);
   }
 
-  return <Card className="flex flex-col gap-3 p-4 min-w-[400px]">
+  return <Card className="flex flex-col gap-3 p-4 min-w-full sm:min-w-[400px]">
     <div className="flex justify-between ">
       <div>
         <h3 className="font-bold text-[#141416]">{roomingList.rfpName}</h3>
@@ -40,7 +40,7 @@ export const RoomingListCard = ({ roomingList }: RoomingListCardProps) => {
     {isFetching ? <Skeleton className="w-full h-5" /> : <DateRangeDisplay min={data?.minDate ?? ""} max={data?.maxDate ?? ""} />}
 
     <div className="flex gap-2">
-      <Button className="flex-1" onClick={handleLogBookings} isLoading={isFetching}>View Bookings ({data?.bookingsCount})</Button>
+      <Button className="flex-1 h-10" onClick={handleLogBookings} isLoading={isFetching}>View Bookings ({data?.bookingsCount})</Button>
       <AgreementButton />
     </div>
   </Card>

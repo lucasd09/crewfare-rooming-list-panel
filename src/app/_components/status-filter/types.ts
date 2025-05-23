@@ -1,5 +1,10 @@
-import { SearchFilters } from "@/app/hooks/use-search/types";
 import { Dispatch, SetStateAction } from "react";
+
+export type SearchFilters = {
+  active: boolean;
+  closed: boolean;
+  cancelled: boolean;
+};
 
 export type StatusFilterProps = {
   filters: SearchFilters;

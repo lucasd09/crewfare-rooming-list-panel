@@ -12,7 +12,7 @@ export const RoomingListEvent = ({ event }: RoomingListEventProps) => {
       <div className="h-[1px] bg-gradient-to-r from-indigo-500 to-indigo-50 w-full" />
     </div>
 
-    <div className="flex gap-4 overflow-x-auto pb-4">
+    <div className="flex flex-col sm:flex-row gap-4 overflow-x-auto pb-4">
       {event.roomingLists.map((roomingList) => (
         <RoomingListCard key={roomingList.roomingListId} roomingList={roomingList} />
       ))}

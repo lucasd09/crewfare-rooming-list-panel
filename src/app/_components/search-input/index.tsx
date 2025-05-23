@@ -8,7 +8,7 @@ export const SearchInput = ({ searchTerm, setSearchTerm }: SearchInputProps) => 
     setSearchTerm('')
   }
   return <div className="relative max-w-sm w-full">
-    <div className="absolute top-1 left-1 rounded-lg bg-slate-200 size-10 border grid place-content-center">
+    <div className="absolute top-1 left-1 rounded-lg bg-slate-50 size-10 border grid place-content-center">
       <Search className="size-4 text-muted-foreground" />
     </div>
     <Input
